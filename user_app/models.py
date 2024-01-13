@@ -58,7 +58,7 @@ class User(AbstractUser):
     location=models.CharField(choices=PREFECTURE_CHOICES,max_length=200,default='東京', verbose_name='都道府県')
 
     USERNAME_FIELD='email'
-    REQUIRED_FIELDS=['username','location']
+    REQUIRED_FIELDS=['username']
     def __str__(self):
         return self.username
     
