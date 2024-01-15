@@ -22,6 +22,6 @@ admin.site.register(Category,CategoryAdmin)
 admin.site.register(Book,BookAdmin)
 admin.site.register(BookPackage,BookPackageAdmin)
 admin.site.register(PackageReview,PackageReviewAdmin)
-
+admin.site.register(Section)
     
     

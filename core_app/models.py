@@ -79,6 +79,10 @@ PREFECTURE_CHOICES = [
 
 def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
+class Section(models.Model):
+    title=models.CharField(max_length=200)
+    def __str__(self):
+        return self.title
 
 
 class Category(models.Model):
@@ -104,6 +108,7 @@ class Package(models.Model):
     pid = ShortUUIDField(unique=True, length=10, max_length=20, alphabet="abcdefgh12345",verbose_name='パッケージのid')
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,verbose_name='ユーザ')
     category = models.ForeignKey( Category, on_delete=models.SET_NULL, null=True, related_name="category",verbose_name='カテゴリー')
+    section=models.ForeignKey(Section,on_delete=models.SET_NULL,null=True,verbose_name='セクション')
 
     title = models.CharField(max_length=100, default="Fresh Pear",verbose_name='パッケージの名')
     image = models.ImageField( upload_to=user_directory_path, default="product.jpg",verbose_name='パッケージの写真')
